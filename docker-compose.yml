@@ -1,8 +1,7 @@
 version: "3.9"
 services:
-  iracing-discord-multiprefix:
+  bridge:
     build: .
-    container_name: iracing-discord-multiprefix
     environment:
       - IRACING_EMAIL=${IRACING_EMAIL}
       - IRACING_PASSWORD=${IRACING_PASSWORD}
