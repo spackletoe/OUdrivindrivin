@@ -1,26 +1,18 @@
-# Configure each driver with a UNIQUE ir2mqtt topic prefix.
-# Example: set the ir2mqtt "Topic Prefix" on each driver's iRacing PC to match 'topic_prefix' below.
+# Tracked drivers for official result summaries
+# Set enabled: false to skip a driver
+
 drivers:
   - name: "Joe Zubo"
-    display_label: "@thechickening"      # shown in messages; can be a nickname
     iracing_id: 486889
-    discord_id: "357172893412491264"    # optional: if you want to @mention, see README
-    topic_prefix: "joe"                  # <-- set ir2mqtt prefix on Joe's PC to "joe"
-    webhook: ""                          # optional: per-driver webhook; leave empty to use default_webhook
+    discord_id: "357172893412491264"
     enabled: true
 
   - name: "Mike Popp"
-    display_label: "@CrispyCargo"
     iracing_id: 508009
     discord_id: "700425120719568896"
-    topic_prefix: "mike"                 # <-- set ir2mqtt prefix on Mike's PC to "mike"
-    webhook: ""
     enabled: true
 
   - name: "Tom LeBaron"
-    display_label: "@darthmcfraser"
     iracing_id: 935585
     discord_id: "570322513029103636"
-    topic_prefix: "tom"                  # <-- set ir2mqtt prefix on Tom's PC to "tom"
-    webhook: ""
     enabled: true

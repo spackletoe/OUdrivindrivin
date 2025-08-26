@@ -1,9 +1,13 @@
 mqtt:
-  host: "homeassistant.local"   # or IP/hostname of your MQTT broker
+  host: "mqtt"            # MQTT broker host or IP
   port: 1883
-  username: "joe@epopp.com"
-  password: "J3llyfish!irac"
+  prefix: "OUdrivindrivin" # ir2mqtt topic prefix
+  client_id: "ou-bridge"
 
+# Discord webhook for the channel where messages will be posted
 discord:
-  # Fallback webhook if a driver doesn't specify one
-  default_webhook: "https://discord.com/api/webhooks/1409843501453017119/SW3JH5EcgMgjPsswqQkAOuty5Hzsi9z5bDvAvVE0GGUewUW-AgA1dha50WRNW3kOqGpF"
+  webhook: "https://discord.com/api/webhooks/REPLACE_ME"
+
+# Runtime flags
+runtime:
+  post_official: true      # fetch official results after checkered
