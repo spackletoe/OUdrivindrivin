@@ -1,21 +1,21 @@
-# Discord bot
+# Sample settings — copy/edit for your install. Prefer secrets in .env.
+#
+# discord.token: prefer DISCORD_BOT_TOKEN in .env instead of putting the token here.
+# discord.channel_id: or set DISCORD_CHANNEL_ID in .env
+
 discord:
-  # Prefer setting DISCORD_BOT_TOKEN in .env instead of putting the token here.
   token: "REPLACE_ME"
-  # Channel where live race messages are posted (right-click channel → Copy Channel ID)
   channel_id: 0
-  # Optional: set your server ID to sync slash commands instantly to one guild
-  # guild_id: 0
+  # guild_id: 0   # optional — sync slash commands instantly to one server
 
 mqtt:
-  host: "mqtt"              # MQTT broker hostname or IP
+  host: "mqtt"              # broker hostname or IP (use "mqtt" with the optional compose service)
   port: 1883
   prefix: "OUdrivindrivin"  # must match ir2mqtt Topic Prefix
   client_id: "ou-race-bot"
   # username: ""
   # password: ""
 
-# Runtime toggles
 runtime:
   post_official: true   # after checkered, fetch official SOF / iR / SR for tracked drivers
   post_laps: true       # post a Discord line on each completed lap

@@ -2,5 +2,12 @@
 __pycache__/
 *.pyc
 .venv/
+.work/
+*.bak
+last_result.json
+started_at
+has_build
+autostart
+name
 venv/
 .pytest_cache/
