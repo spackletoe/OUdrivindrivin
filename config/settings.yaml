@@ -1,13 +1,22 @@
-mqtt:
-  host: "mqtt"            # MQTT broker host or IP
-  port: 1883
-  prefix: "OUdrivindrivin" # ir2mqtt topic prefix
-  client_id: "ou-bridge"
-
-# Discord webhook for the channel where messages will be posted
+# Discord bot
 discord:
-  webhook: "https://discord.com/api/webhooks/REPLACE_ME"
+  # Prefer setting DISCORD_BOT_TOKEN in .env instead of putting the token here.
+  token: "REPLACE_ME"
+  # Channel where live race messages are posted (right-click channel → Copy Channel ID)
+  channel_id: 0
+  # Optional: set your server ID to sync slash commands instantly to one guild
+  # guild_id: 0
 
-# Runtime flags
+mqtt:
+  host: "mqtt"              # MQTT broker hostname or IP
+  port: 1883
+  prefix: "OUdrivindrivin"  # must match ir2mqtt Topic Prefix
+  client_id: "ou-race-bot"
+  # username: ""
+  # password: ""
+
+# Runtime toggles
 runtime:
-  post_official: true      # fetch official results after checkered
+  post_official: true   # after checkered, fetch official SOF / iR / SR for tracked drivers
+  post_laps: true       # post a Discord line on each completed lap
+  post_qualify: true    # post qualifying result once per session
