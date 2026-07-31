@@ -35,15 +35,17 @@ Create an application at [Discord Developer Portal](https://discord.com/develope
 
 ## Quick start
 
-1. Copy `.env.example` to `.env` and set at least `DISCORD_BOT_TOKEN`.
-2. Edit `config/settings.yaml` — set `discord.channel_id`, and point `mqtt.host` / `mqtt.prefix` at your broker and `ir2mqtt` prefix.
-3. Edit `config/drivers.yaml` with the drivers you want in official summaries.
-4. Start the bot:
+1. Copy this repo (or download a [Release](https://github.com/spackletoe/OUdrivindrivin/releases)).
+2. Copy `.env.example` to `.env` and set at least `DISCORD_BOT_TOKEN`.
+3. Edit `config/settings.yaml` — set `discord.channel_id`, and point `mqtt.host` / `mqtt.prefix` at your broker and `ir2mqtt` prefix.
+4. Edit `config/drivers.yaml` with the drivers you want in official summaries.
+5. Start the bot with the included sample compose file:
    ```bash
    docker compose up -d --build
    ```
-5. On the iRacing PC, run `ir2mqtt` with the **same topic prefix** and broker host/port.
-6. In Discord, try `/ping` and `/status`.
+   Tagged releases also publish `ghcr.io/spackletoe/oudrivindrivin` — `docker compose pull` works once an image exists for that tag.
+6. On the iRacing PC, run `ir2mqtt` with the **same topic prefix** and broker host/port.
+7. In Discord, try `/ping` and `/status`.
 
 ### Optional local Mosquitto broker
 

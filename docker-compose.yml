@@ -1,23 +1,31 @@
-version: "3.9"
+# Sample compose for OUdrivindrivin
+# 1. Copy .env.example → .env and fill in DISCORD_BOT_TOKEN
+# 2. Edit config/settings.yaml (channel_id + mqtt) and config/drivers.yaml
+# 3. docker compose up -d --build
+#
+# Prefer a prebuilt image from a GitHub Release / GHCR when available:
+#   image: ghcr.io/spackletoe/oudrivindrivin:latest
 
 services:
-  bridge:
+  oudrivindrivin:
     build: .
+    image: ghcr.io/spackletoe/oudrivindrivin:latest
+    container_name: oudrivindrivin
     env_file:
       - .env
     environment:
-      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
-      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID:-}
-      - IRACING_EMAIL=${IRACING_EMAIL:-}
-      - IRACING_PASSWORD=${IRACING_PASSWORD:-}
+      DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+      DISCORD_CHANNEL_ID: ${DISCORD_CHANNEL_ID:-}
+      IRACING_EMAIL: ${IRACING_EMAIL:-}
+      IRACING_PASSWORD: ${IRACING_PASSWORD:-}
     volumes:
       - ./config:/app/config:ro
     restart: unless-stopped
-    # Uncomment if you add the optional mqtt service below:
+    # Uncomment if you enable the optional mqtt service below:
     # depends_on:
     #   - mqtt
 
-  # Optional local MQTT broker — enable if you do not already have one.
+  # Optional local MQTT broker — enable only if you do not already have one.
   # mqtt:
   #   image: eclipse-mosquitto:2
   #   volumes:
