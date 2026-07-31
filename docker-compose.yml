@@ -1,10 +1,26 @@
 version: "3.9"
+
 services:
   bridge:
     build: .
+    env_file:
+      - .env
     environment:
-      - IRACING_EMAIL=${IRACING_EMAIL}
-      - IRACING_PASSWORD=${IRACING_PASSWORD}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID:-}
+      - IRACING_EMAIL=${IRACING_EMAIL:-}
+      - IRACING_PASSWORD=${IRACING_PASSWORD:-}
     volumes:
       - ./config:/app/config:ro
     restart: unless-stopped
+    # Uncomment if you add the optional mqtt service below:
+    # depends_on:
+    #   - mqtt
+
+  # Optional local MQTT broker — enable if you do not already have one.
+  # mqtt:
+  #   image: eclipse-mosquitto:2
+  #   volumes:
+  #     - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+  #   ports:
+  #     - "1883:1883"

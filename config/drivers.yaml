@@ -1,18 +1,18 @@
-# Tracked drivers for official result summaries
-# Set enabled: false to skip a driver
+# Drivers included in official result summaries.
+# Set enabled: false (or comment out) to skip a driver.
+# discord_id is optional — when present the bot @mentions them.
 
 drivers:
-  - name: "Joe Zubo"
-    iracing_id: 486889
-    discord_id: "357172893412491264"
+  - name: "Alice Example"
+    iracing_id: 100001
+    discord_id: "111111111111111111"
     enabled: true
 
-  - name: "Mike Popp"
-    iracing_id: 508009
-    discord_id: "700425120719568896"
+  - name: "Bob Example"
+    iracing_id: 100002
+    discord_id: "222222222222222222"
     enabled: true
 
-  - name: "Tom LeBaron"
-    iracing_id: 935585
-    discord_id: "570322513029103636"
-    enabled: true
+  - name: "Inactive Example"
+    iracing_id: 100003
+    enabled: false
