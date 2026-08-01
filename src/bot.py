@@ -15,7 +15,7 @@ from models import Driver, LiveState
 from mqtt_bridge import MqttBridge
 from results import fetch_official_summary
 
-log = logging.getLogger("oudrivin.bot")
+log = logging.getLogger("uracing.bot")
 
 
 class RaceBot(commands.Bot):
@@ -118,7 +118,7 @@ class RaceBot(commands.Bot):
 
 
 # Slash commands need a bot reference; resolve via interaction.client
-@app_commands.command(name="status", description="Show the current live race session state")
+@app_commands.command(name="status", description="Show the current live uRacing? session state")
 async def status_cmd(interaction: discord.Interaction) -> None:
     bot: RaceBot = interaction.client  # type: ignore[assignment]
     st = bot.live_state()
@@ -135,9 +135,9 @@ async def status_cmd(interaction: discord.Interaction) -> None:
     await interaction.response.send_message("\n".join(lines), ephemeral=True)
 
 
-@app_commands.command(name="ping", description="Check that the race bot is online")
+@app_commands.command(name="ping", description="Check that uRacing? is online")
 async def ping_cmd(interaction: discord.Interaction) -> None:
-    await interaction.response.send_message("Pong — race bot is online.", ephemeral=True)
+    await interaction.response.send_message("Pong — uRacing? is online.", ephemeral=True)
 
 
 @app_commands.command(name="drivers", description="List tracked drivers for official results")

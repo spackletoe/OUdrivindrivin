@@ -23,13 +23,13 @@ class BridgeTests(unittest.TestCase):
     def setUp(self):
         self.events = []
         settings = {
-            "mqtt": {"prefix": "OUdrivindrivin", "client_id": "test"},
+            "mqtt": {"prefix": "uRacing", "client_id": "test"},
             "runtime": {"post_official": True, "post_laps": True, "post_qualify": True},
         }
         self.bridge = MqttBridge(settings, [], on_event=self.events.append)
 
     def pub(self, key: str, payload: str):
-        self.bridge.on_message(None, None, FakeMsg(f"OUdrivindrivin/{key}", payload))
+        self.bridge.on_message(None, None, FakeMsg(f"uRacing/{key}", payload))
 
     def test_fmt_laptime(self):
         self.assertEqual(fmt_laptime(92.68), "1:32.68")

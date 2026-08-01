@@ -1,4 +1,4 @@
-# OUdrivindrivin
+# uRacing?
 
 Discord bot that posts live iRacing session updates to a channel. Telemetry from
 [`ir2mqtt`](https://github.com/search?q=ir2mqtt) is published to MQTT; this bot
@@ -6,8 +6,12 @@ subscribes and reports join / green / qualify / lap / checkered events. After th
 race it can call the iRacing Data API for official results (SOF, iRating, SR)
 for drivers listed in config.
 
+> **Naming note:** The product brand is **uRacing?**. Characters like `?` are not
+> allowed in Docker container names, GitHub repo names, or GHCR image paths, so
+> those identifiers use `uRacing` / `uracing` instead.
+
 ```
-iRacing PC ──► ir2mqtt ──► MQTT broker ──► OUdrivindrivin bot ──► Discord channel
+iRacing PC ──► ir2mqtt ──► MQTT broker ──► uRacing? bot ──► Discord channel
                                               │
                                               └─► iRacing Data API (optional official results)
 ```
@@ -27,7 +31,7 @@ iRacing PC ──► ir2mqtt ──► MQTT broker ──► OUdrivindrivin bot 
 
 Create an application at [Discord Developer Portal](https://discord.com/developers/applications):
 
-1. **New Application** → **Bot** → reset/copy the token.
+1. **New Application** (name it **uRacing?** if you like) → **Bot** → reset/copy the token.
 2. Under **OAuth2 → URL Generator**, scopes: `bot`, `applications.commands`.
 3. Bot permissions: **View Channels**, **Send Messages**, **Embed Links** (optional), **Read Message History** (optional).
 4. Open the generated invite URL, add the bot to your server.
@@ -35,7 +39,7 @@ Create an application at [Discord Developer Portal](https://discord.com/develope
 
 ## Quick start
 
-1. Copy this repo (or download a [Release](https://github.com/spackletoe/OUdrivindrivin/releases)).
+1. Copy this repo (or download a [Release](https://github.com/spackletoe/uRacing/releases)).
 2. Copy `.env.example` to `.env` and set at least `DISCORD_BOT_TOKEN`.
 3. Edit `config/settings.yaml` — set `discord.channel_id`, and point `mqtt.host` / `mqtt.prefix` at your broker and `ir2mqtt` prefix.
 4. Edit `config/drivers.yaml` with the drivers you want in official summaries.
@@ -43,7 +47,7 @@ Create an application at [Discord Developer Portal](https://discord.com/develope
    ```bash
    docker compose up -d --build
    ```
-   Tagged releases also publish `ghcr.io/spackletoe/oudrivindrivin` — `docker compose pull` works once an image exists for that tag.
+   Tagged releases also publish `ghcr.io/spackletoe/uracing` — `docker compose pull` works once an image exists for that tag.
 6. On the iRacing PC, run `ir2mqtt` with the **same topic prefix** and broker host/port.
 7. In Discord, try `/ping` and `/status`.
 
@@ -79,8 +83,8 @@ discord:
 mqtt:
   host: "mqtt"                 # broker hostname or IP
   port: 1883
-  prefix: "OUdrivindrivin"     # must match ir2mqtt Topic Prefix
-  client_id: "ou-race-bot"
+  prefix: "uRacing"            # must match ir2mqtt Topic Prefix (no "?" — keep topics simple)
+  client_id: "uracing-bot"
   # username: ""
   # password: ""
 
@@ -92,7 +96,7 @@ runtime:
 
 **Notes**
 
-- `mqtt.prefix` is prepended to every topic (e.g. `OUdrivindrivin/session/flag`).
+- `mqtt.prefix` is prepended to every topic (e.g. `uRacing/session/flag`).
 - If `mqtt.host` is another machine on your LAN, use that IP instead of `mqtt`.
 - Set `guild_id` while developing so `/status`, `/ping`, and `/drivers` appear immediately; without it, global command sync can take up to ~1 hour.
 
@@ -143,7 +147,7 @@ With the bot running, simulate a race without iRacing:
 
 ```bash
 BROKER=<host or IP>
-PREFIX=OUdrivindrivin
+PREFIX=uRacing
 
 mosquitto_pub -h $BROKER -t $PREFIX/session/series_name -m "FIA F4"
 mosquitto_pub -h $BROKER -t $PREFIX/session/track_name -m "COTA"

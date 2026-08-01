@@ -1,16 +1,18 @@
-# Sample compose for OUdrivindrivin
+# Sample compose for uRacing?
 # 1. Copy .env.example → .env and fill in DISCORD_BOT_TOKEN
 # 2. Edit config/settings.yaml (channel_id + mqtt) and config/drivers.yaml
 # 3. docker compose up -d --build
 #
 # Prefer a prebuilt image from a GitHub Release / GHCR when available:
-#   image: ghcr.io/spackletoe/oudrivindrivin:latest
+#   image: ghcr.io/spackletoe/uracing:latest
+#
+# Note: Docker container_name cannot include "?". Brand as "uRacing?" in Discord / docs.
 
 services:
-  oudrivindrivin:
+  uracing:
     build: .
-    image: ghcr.io/spackletoe/oudrivindrivin:latest
-    container_name: oudrivindrivin
+    image: ghcr.io/spackletoe/uracing:latest
+    container_name: uRacing
     env_file:
       - .env
     environment:

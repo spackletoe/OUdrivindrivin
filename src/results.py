@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from models import Driver
 
-log = logging.getLogger("oudrivin.results")
+log = logging.getLogger("uracing.results")
 
 try:
     from iracingdataapi.client import irDataClient

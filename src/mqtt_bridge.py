@@ -11,7 +11,7 @@ import paho.mqtt.client as mqtt
 from models import Driver, LiveState
 from util import fmt_laptime
 
-log = logging.getLogger("oudrivin.mqtt")
+log = logging.getLogger("uracing.mqtt")
 
 # Events are plain dicts: {"type": "...", "content": "...", "request_official": bool}
 EventCallback = Callable[[Dict[str, Any]], None]
@@ -44,7 +44,7 @@ class MqttBridge:
         self.on_event = on_event
         self.state = LiveState()
         self.prefix = settings.get("mqtt", {}).get("prefix", "").rstrip("/")
-        client_id = settings.get("mqtt", {}).get("client_id", "ou-race-bot")
+        client_id = settings.get("mqtt", {}).get("client_id", "uracing-bot")
         self.client = mqtt.Client(
             mqtt.CallbackAPIVersion.VERSION2,
             client_id=client_id,

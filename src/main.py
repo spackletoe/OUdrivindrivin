@@ -1,4 +1,4 @@
-"""OUdrivindrivin — iRacing race reporting Discord bot."""
+"""uRacing? — iRacing race reporting Discord bot."""
 
 from __future__ import annotations
 

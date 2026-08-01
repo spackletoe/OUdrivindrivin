@@ -1,4 +1,4 @@
-# Sample settings — copy/edit for your install. Prefer secrets in .env.
+# Sample settings for uRacing? — copy/edit for your install. Prefer secrets in .env.
 #
 # discord.token: prefer DISCORD_BOT_TOKEN in .env instead of putting the token here.
 # discord.channel_id: or set DISCORD_CHANNEL_ID in .env
@@ -11,8 +11,8 @@ discord:
 mqtt:
   host: "mqtt"              # broker hostname or IP (use "mqtt" with the optional compose service)
   port: 1883
-  prefix: "OUdrivindrivin"  # must match ir2mqtt Topic Prefix
-  client_id: "ou-race-bot"
+  prefix: "uRacing"         # must match ir2mqtt Topic Prefix (avoid "?" in MQTT topics)
+  client_id: "uracing-bot"
   # username: ""
   # password: ""
 
